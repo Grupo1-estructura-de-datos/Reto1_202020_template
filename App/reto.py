@@ -120,7 +120,7 @@ def ConocerAUnDirector (nombredirector,lstmoviescasting,lstmoviesdetails):
     lt.addLast(nombresanospuntajes,-1)
     IteradorNAP = it.newIterator(nombresanospuntajes)
     nombresanos=lt.newList()
-    numeropeliculas=lt.size(nombresanospuntajes-1)
+    numeropeliculas=lt.size(nombresanospuntajes)-1
     ADividir=0
     while it.hasNext(IteradorNAP):
         tripla=it.next(IteradorNAP)
