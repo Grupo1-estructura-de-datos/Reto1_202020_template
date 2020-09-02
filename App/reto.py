@@ -26,11 +26,6 @@
   Este módulo es una aplicación básica con un menú de opciones para cargar datos, contar elementos, y hacer búsquedas sobre una lista .
 """
 
-#Hacer pruebas con 20 datos!!!!
-#Error total peliculas +1
-#genero no puede ir vacio
-#error numero de peliculas que retorna
-
 import config as cf
 import sys
 import csv
@@ -175,6 +170,7 @@ def ConocerAUnActor(nombreactor,lstmoviescasting,lstmoviesdetails):
             lt.addLast(IDsActor,elemento["id"])
             lt.addLast(Directorsname,elemento["director_name"])
     mD = statistics.mode(Directorsname["elements"])[0][0]      
+    lt.addLast(IDsActor,-1)
     IteradorID = it.newIterator(IDsActor)
     nombresanospuntajes=lt.newList()
     numero = it.next(IteradorID)
@@ -209,11 +205,11 @@ def CrearRankingPeliculasGenero(Genero,NPeliculasRanking,Criterio,TipoDeOrdenami
     nombre=it.next(iteradornombres)[0]
     iterable=it.newIterator(lstmoviesdetails)
     ListaAImprimir=lt.newList()
-    while it.hasNext(iteradornombres)==True and it.hasNext(iterable)==True:
+    while it.hasNext(iteradornombres) and (int(iteradornombres["current_node"])<(NPeliculasRanking)) and it.hasNext(iterable) and (int(iteradornombres["current_node"])<(respuesta[1]-1)):
         pelicula=it.next(iterable)
-        if pelicula["title"]==nombre:
+        if pelicula["title"].replace==nombre.replace:
             tripla=(pelicula["title"],pelicula["release_date"][-4:],pelicula[SopaDeMacacoUmaDeliciaKKKK])
-            lt.addLast(ListaAImprimir,tripla)  
+            lt.addLast(ListaAImprimir,tripla)
             nombre=it.next(iteradornombres)[0] 
     lt.addLast(ListaAImprimir,-1)
     IteradorNAP = it.newIterator(ListaAImprimir)
@@ -232,7 +228,7 @@ def EntenderUnGeneroCinematografico(nombregenero,lstmoviesdetails):
     while it.hasNext(Iteradordetalles):
         elemento = it.next(Iteradordetalles)
         if nombregenero.title() in elemento["genres"]:
-            tupla = (elemento["original_title"],elemento["release_date"][-4:])
+            tupla = (elemento["title"],elemento["release_date"][-4:])
             lt.addLast(PeliculasGenero,tupla)
             count += int(elemento["vote_count"])
     lt.addLast(PeliculasGenero,-1)
