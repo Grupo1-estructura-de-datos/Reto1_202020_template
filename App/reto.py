@@ -207,7 +207,7 @@ def CrearRankingPeliculasGenero(Genero,NPeliculasRanking,Criterio,TipoDeOrdenami
     ListaAImprimir=lt.newList()
     while it.hasNext(iteradornombres) and (int(iteradornombres["current_node"])<(NPeliculasRanking)) and it.hasNext(iterable) and (int(iteradornombres["current_node"])<(respuesta[1]-1)):
         pelicula=it.next(iterable)
-        if pelicula["title"].replace==nombre.replace:
+        if pelicula["title"]==nombre:
             tripla=(pelicula["title"],pelicula["release_date"][-4:],pelicula[SopaDeMacacoUmaDeliciaKKKK])
             lt.addLast(ListaAImprimir,tripla)
             nombre=it.next(iteradornombres)[0] 
